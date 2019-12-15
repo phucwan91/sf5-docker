@@ -1,0 +1,22 @@
+version: '3.0'
+
+services:
+  node:
+    build:
+      context: ./node
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    volumes:
+      - ../:/var/www/html/site
+    working_dir: /var/www/html/site
+    command: ["tail", "-f", "/dev/null"]
+
+#  maildev:
+#    image: djfarrelly/maildev
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "3"
+#    ports:
+#      - 1080:80
